@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
   let url =
-    "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-rqzyr/endpoint/data/v1/action/find";
+    "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-rqzyr/endpoint/data/v1/action/" + req.get('api-url');
   console.log("[POST] " + url);
   const postData = JSON.stringify(req.body);
 
@@ -38,7 +38,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://sino-g.vercel.app/"],
   })
 );
 
